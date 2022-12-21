@@ -181,7 +181,7 @@
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Exercises</span>
             </li>
-            <li class="menu-item active open">
+            <li class="menu-item">
               <a
                 href="exercises-html-attributes-1.html"
                 class="menu-link menu-toggle"
@@ -190,7 +190,7 @@
                 <div>HTML Exercises</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item active open">
+                <li class="menu-item">
                   <a
                     href="exercises-html-attributes-1.html"
                     class="menu-link menu-toggle"
@@ -207,7 +207,7 @@
                         <div>Exercise 1</div>
                       </a>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item">
                       <a
                         id="exercises-html-attributes-2"
                         href="exercises-html-attributes-2.html"
@@ -345,7 +345,7 @@
                 <div>HTML Quiz</div>
               </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item active">
               <a href="quiz-css.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bxl-css3"></i>
                 <div>CSS Quiz</div>
@@ -406,11 +406,47 @@
                   <div class="card text-center">
                     <div class="card-body">
                       <h1 class="card-title display-2 text-primary m-0">
-                        <b>HTML Exercises</b>
+                        <b>CSS Quiz</b>
                       </h1>
                       <p class="card-text">
-                        Answer the questions to train yourself!
+                        Answer the questions before the time runs out!
                       </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <span class="d-block fw-semibold mb-3"
+                        >Total of Questions</span
+                      >
+                      <h1 class="card-title mb-0 text-primary">25</h1>
+                      <small class="fw-semibold">questions</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <span class="d-block fw-semibold mb-3"
+                        >Times Provided</span
+                      >
+                      <h1 class="card-title mb-0 text-primary">15</h1>
+                      <small class="fw-semibold">minutes</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <span class="d-block fw-semibold mb-3"
+                        >Highest Score</span
+                      >
+                      <h1 id="score" class="card-title mb-0 text-primary"></h1>
+                      <small class="fw-semibold">/ 25</small>
                     </div>
                   </div>
                 </div>
@@ -418,37 +454,10 @@
                 <div class="col-lg-12 mb-4">
                   <div class="card">
                     <div class="card-body">
+                      <div id="timer"></div>
+                      <div id="quiz"></div>
                       <div
-                        id="exercises-html-attributes-2-done"
-                        class="float-end"
-                      ></div>
-                      <h1 class="card-title">Exercise 2</h1>
-                      <p class="card-text">
-                        Set the size of the image to 250 pixels wide.
-                      </p>
-                      <div class="card-text exercisecontainer">
-                        <pre>&lt;img src="w3schools.jpg" width="<input id="answer" maxlength="3" style="width: 34px" />" height="400"&gt;</pre>
-                      </div>
-                      <button
-                        id="submitBtn"
-                        class="btn btn-primary mb-1 mb-md-0"
-                      >
-                        Submit
-                      </button>
-                      <button
-                        id="showAnswerBtn"
-                        class="btn btn-warning mb-1 mb-md-0"
-                      >
-                        Show Answer
-                      </button>
-                      <button
-                        id="clearProgressBtn"
-                        class="btn btn-danger mb-1 mb-md-0"
-                      >
-                        Clear Progress
-                      </button>
-                      <div
-                        id="result"
+                        id="results"
                         class="modal fade"
                         tabindex="-1"
                         aria-hidden="true"
@@ -458,9 +467,33 @@
                           role="document"
                         >
                           <div class="modal-content">
-                            <div class="modal-header"></div>
+                            <div class="modal-header">
+                              <h5 class="modal-title">Game Over!</h5>
+                              <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                              ></button>
+                            </div>
                             <div class="modal-body text-center"></div>
-                            <div class="modal-footer text-center"></div>
+                            <div class="modal-footer">
+                              <a
+                                href="quiz-css.html"
+                                type="button"
+                                class="btn btn-outline-secondary"
+                                data-bs-dismiss="modal"
+                              >
+                                Close
+                              </a>
+                              <a
+                                href="quiz-css.html"
+                                type="button"
+                                class="btn btn-outline-light"
+                              >
+                                Try Again
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -527,63 +560,366 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script>
-      // Set the correct answer
-      var correctAnswer = "250";
-      // When the user clicks the "Submit" button
-      $("#submitBtn").click(function () {
-        // Get the user's answer
-        var userAnswer = $("#answer").val();
+      // Quiz game data
+      const quiz = [
+        {
+          question: "What does CSS stand for?",
+          answers: [
+            { text: "Creative Style Sheets", correct: false },
+            { text: "Computer Style Sheets", correct: false },
+            { text: "Colorful Style Sheets", correct: false },
+            { text: "Cascading Style Sheets", correct: true },
+          ],
+        },
+        {
+          question:
+            "What is the correct HTML for referring to an external style sheet?",
+          answers: [
+            {
+              text: "<code>&lt;style src=&quot;mystyle.css&quot;&gt;</code>",
+              correct: false,
+            },
+            {
+              text: "<code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot;&gt;</code>",
+              correct: true,
+            },
+            {
+              text: "<code>&lt;stylesheet&gt;mystyle.css&lt;/stylesheet&gt;</code>",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question:
+            "Where in an HTML document is the correct place to refer to an external style sheet?",
+          answers: [
+            { text: "At the end of the document", correct: false },
+            { text: "In the &lt;body&gt; section", correct: false },
+            { text: "In the &lt;head&gt; section", correct: true },
+          ],
+        },
+        {
+          question: "Which HTML tag is used to define an internal style sheet?",
+          answers: [
+            { text: "<code>&lt;style&gt;</code>", correct: true },
+            { text: "<code>&lt;css&gt;</code>", correct: false },
+            { text: "<code>&lt;script&gt;</code>", correct: false },
+          ],
+        },
+        {
+          question: "Which HTML attribute is used to define inline styles?",
+          answers: [
+            {
+              text: "<code>styles</code>",
+              correct: false,
+            },
+            {
+              text: "<code>class</code>",
+              correct: false,
+            },
+            {
+              text: "<code>style</code>",
+              correct: true,
+            },
+            {
+              text: "<code>font</code>",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "Which is the correct CSS syntax?",
+          answers: [
+            { text: "<code>{body;color:black;};</code>", correct: false },
+            { text: "<code>body {color: black;}</code>", correct: true },
+            { text: "<code>body:color=black;</code>", correct: false },
+            { text: "<code>{body:color=black;}</code>", correct: false },
+          ],
+        },
+        {
+          question: "How do you insert a comment in a CSS file?",
+          answers: [
+            { text: "' this is a comment", correct: false },
+            { text: "// this is a comment //", correct: false },
+            { text: "// this is a comment", correct: false },
+            { text: "/* this is a comment */", correct: true },
+          ],
+        },
+        {
+          question: "Which property is used to change the background color?",
+          answers: [
+            {
+              text: "<code>background-color</code>",
+              correct: true,
+            },
+            {
+              text: "<code>bgcolor</code>",
+              correct: false,
+            },
+            {
+              text: "<code>color</code>",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "How do you add a background color for all <h1> elements?",
+          answers: [
+            {
+              text: "<code>h1 {background-color:#FFFFFF;} </code>",
+              correct: true,
+            },
+            {
+              text: "<code>h1.all {background-color:#FFFFFF;}",
+              correct: false,
+            },
+            {
+              text: "<code>all.h1 {background-color:#FFFFFF;}</code>",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question:
+            "Which CSS property is used to change the text color of an element?",
+          answers: [
+            {
+              text: "<code>fgcolor</code>",
+              correct: false,
+            },
+            {
+              text: "<code>color</code>",
+              correct: true,
+            },
+            {
+              text: "<code>text-color</code>",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "Which CSS property controls the text size?",
+          answers: [
+            {
+              text: "<code>font-size</code>",
+              correct: true,
+            },
+            {
+              text: "<code>text-size</code>",
+              correct: false,
+            },
+            {
+              text: "<code>text-style</code>",
+              correct: false,
+            },
+            {
+              text: "<code>font-style</code>",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question:
+            "What is the correct CSS syntax for making all the <code>&lt;p&gt;</code> elements bold?",
+          answers: [
+            {
+              text: "<code>&lt;p style=&quot;text-size:bold;&quot;&gt;</code>",
+              correct: false,
+            },
+            {
+              text: "<code>&lt;p style=&quot;font-size:bold;&quot;&gt;</code>",
+              correct: false,
+            },
+            { text: "<code>p {font-weight:bold;}</code>", correct: true },
+            { text: "<code>p {text-size:bold;}</code>", correct: false },
+          ],
+        },
+        {
+          question: "How do you display hyperlinks without an underline?",
+          answers: [
+            { text: "<code>a {underline:none;}</code>", correct: false },
+            {
+              text: "<code>a {text-decoration:no-underline;}</code>",
+              correct: false,
+            },
+            {
+              text: "<code>a {decoration:no-underline;}</code>",
+              correct: false,
+            },
+            { text: "<code>a {text-decoration:none;}</code>", correct: true },
+          ],
+        },
+        {
+          question:
+            "How do you make each word in a text start with a capital letter?",
+          answers: [
+            { text: "<code>text-transform:capitalize</code>", correct: true },
+            { text: "You can't do that with CSS", correct: false },
+            { text: "<code>transform:capitalize</code>", correct: false },
+            { text: "<code>text-style:capitalize</code>", correct: false },
+          ],
+        },
+        {
+          question: "Which property is used to change the font of an element?",
+          answers: [
+            {
+              text: "<code>font-style</code>",
+              correct: false,
+            },
+            { text: "<code>font-weight</code>", correct: false },
+            {
+              text: "<code>font-family</code>",
+              correct: true,
+            },
+          ],
+        },
+        {
+          question: "How do you make the text bold?",
+          answers: [
+            { text: "<code>font:bold;</code>", correct: false },
+            {
+              text: "<code>font-weight:bold;</code>",
+              correct: true,
+            },
+            {
+              text: "<code>style:bold;</code>",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question:
+            "How do you display a border like this:<br>The top border = 10 pixels<br>The bottom border = 5 pixels<br>The left border = 20 pixels<br>The right border = 1 pixel",
+          answers: [
+            {
+              text: "<code>border-width:10px 5px 20px 1px;</code>",
+              correct: false,
+            },
+            {
+              text: "<code>border-width:5px 20px 10px 1px;</code>",
+              correct: false,
+            },
+            {
+              text: "<code>border-width:10px 1px 5px 20px;</code>",
+              correct: true,
+            },
+            {
+              text: "<code>border-width:10px 20px 5px 1px;</code>",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question:
+            "Which property is used to change the left margin of an element?",
+          answers: [
+            {
+              text: "<code>margin-left</code>",
+              correct: true,
+            },
+            {
+              text: "<code>padding-left</code>",
+              correct: false,
+            },
+            { text: "<code>indent</code>", correct: false },
+          ],
+        },
+        {
+          question:
+            "When using the padding property; are you allowed to use negative values?",
+          answers: [
+            {
+              text: "Yes",
+              correct: false,
+            },
+            {
+              text: "No",
+              correct: true,
+            },
+          ],
+        },
+        {
+          question: "How do you make a list that lists its items with squares?",
+          answers: [
+            {
+              text: "<code>list-style-type: square;</code>",
+              correct: true,
+            },
+            {
+              text: "<code>list: square;</code>",
+              correct: false,
+            },
+            {
+              text: "<code>list-type: square;</code>",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "How do you select an element with id 'demo'?",
+          answers: [
+            { text: "<code>demo</code>", correct: false },
+            {
+              text: "<code>.demo</code>",
+              correct: false,
+            },
+            { text: "<code>#demo</code>", correct: true },
+            {
+              text: "<code>*demo</code>",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "How do you select elements with class name 'test'?",
+          answers: [
+            { text: "<code>#test</code>", correct: false },
+            { text: "<code>test</code>", correct: false },
+            { text: "<code>*test</code>", correct: false },
+            { text: "<code>.test</code>", correct: true },
+          ],
+        },
+        {
+          question: "How do you select all p elements inside a div element?",
+          answers: [
+            { text: "<code>div + p</code>", correct: false },
+            { text: "<code>div p</code>", correct: true },
+            { text: "<code>div.p</code>", correct: false },
+          ],
+        },
+        {
+          question: "How do you group selectors?",
+          answers: [
+            { text: "Separate each selector with a space", correct: false },
+            { text: "Separate each selector with a plus sign", correct: false },
+            { text: "Separate each selector with a comma", correct: true },
+          ],
+        },
+        {
+          question: "What is the default value of the position property?",
+          answers: [
+            { text: "fixed", correct: false },
+            { text: "absolute", correct: false },
+            { text: "static", correct: true },
+            { text: "relative", correct: false },
+          ],
+        },
+        // Add more questions here...
+      ];
 
-        // Check if the user's answer is correct
-        if (userAnswer.toLowerCase() == correctAnswer.toLowerCase()) {
-          // If so, show a tick icon and save the fact that the user has answered correctly
-          $("#result").modal("toggle");
-          $("#result .modal-content").addClass("bg-success");
-          $("#result .modal-content").html(`
-                            <div class="modal-header"></div>
-                            <div class="modal-body text-center">
-        <div class="row">
-                              <div class="col mb-3">
-                                <h1 class="text-white">Correct!</h1>
-                              </div>
-                            </div></div>
-                            <div class="modal-footer text-center"></div>
-      `);
-          $("#result .modal-footer").html(`
-                              <a
-                                href="exercises-html-attributes-3.html"
-                                type="button"
-                                class="btn btn-outline-light"
-                              >
-                                Next
-                              </a>
-      `);
-          localStorage.setItem("exercises-html-attributes-2", true);
-        } else {
-          // If not, show an X icon
-          $("#result").modal("toggle");
-          $("#result .modal-content").addClass("bg-danger");
-          $("#result .modal-content").html(`
-                            <div class="modal-header"></div>
-                            <div class="modal-body text-center">
-        <div class="row">
-                              <div class="col mb-3">
-                                <h1 class="text-white">Not Correct</h1>
-                              </div>
-                            </div></div>
-                            <div class="modal-footer text-center"></div>
-      `);
-          $("#result .modal-footer").html(`
-                              <a
-                                href="exercises-html-attributes-2.html"
-                                type="button"
-                                class="btn btn-outline-light"
-                              >
-                                Try Again
-                              </a>
-      `);
-        }
-      });
+      timeLeft = 900;
+
+      totalScore = 15;
+
+      const highestScoreCss = localStorage.getItem("highestScoreCss") || 0;
+
+      const highestScore = highestScoreCss;
+
+      //Display highest score
+      $("#score").html(`${highestScoreCss}`);
+
+      // Start the game when the page loads
+      $(startGame);
     </script>
   </body>
 </html>

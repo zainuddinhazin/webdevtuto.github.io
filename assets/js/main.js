@@ -206,6 +206,54 @@ if (localStorage.getItem("exercises-html-attributes-4")) {
   );
 }
 
+// Exercise 1
+// Check if the user has answered the question correctly before
+if (localStorage.getItem("exercises-css-selectors-1")) {
+  // If so, show a tick icon
+  $("#exercises-css-selectors-1-done").html(
+    `<i class="menu-icon tf-icons bx bx-check fs-1 text-primary"></i>`
+  );
+  $("#exercises-css-selectors-1").append(
+    `<i class="menu-icon tf-icons bx bx-check"></i>`
+  );
+}
+
+// Exercise 2
+// Check if the user has answered the question correctly before
+if (localStorage.getItem("exercises-css-selectors-2")) {
+  // If so, show a tick icon
+  $("#exercises-css-selectors-2-done").html(
+    `<i class="menu-icon tf-icons bx bx-check fs-1 text-primary"></i>`
+  );
+  $("#exercises-css-selectors-2").append(
+    `<i class="menu-icon tf-icons bx bx-check"></i>`
+  );
+}
+
+// Exercise 3
+// Check if the user has answered the question correctly before
+if (localStorage.getItem("exercises-css-selectors-3")) {
+  // If so, show a tick icon
+  $("#exercises-css-selectors-3-done").html(
+    `<i class="menu-icon tf-icons bx bx-check fs-1 text-primary"></i>`
+  );
+  $("#exercises-css-selectors-3").append(
+    `<i class="menu-icon tf-icons bx bx-check"></i>`
+  );
+}
+
+// Exercise 4
+// Check if the user has answered the question correctly before
+if (localStorage.getItem("exercises-css-selectors-4")) {
+  // If so, show a tick icon
+  $("#exercises-css-selectors-4-done").html(
+    `<i class="menu-icon tf-icons bx bx-check fs-1 text-primary"></i>`
+  );
+  $("#exercises-css-selectors-4").append(
+    `<i class="menu-icon tf-icons bx bx-check"></i>`
+  );
+}
+
 // QUIZ
 
 // Timer variables
@@ -301,14 +349,14 @@ function endGame() {
   $("#results .modal-body").html(`
         <div class="row">
                               <div class="col mb-3">
-                                Your final score is <b>${score}</b> out of 40.
+                                Your final score is <b>${score}</b> out of ${totalScore}.
                               </div>
                             </div>
       `);
 
   // Check if the score is higher than the highest score
-  if (score > highestScoreHtml) {
-    localStorage.setItem("highestScoreHtml", score);
+  if (score > highestScore) {
+    localStorage.setItem("highestScore", score);
     $("#results .modal-body").append(`
           <div class="row g-2">
                               <div class="col mb-0">
@@ -340,7 +388,6 @@ function startGame() {
   // Handle clicks on the start button
   $("#start-button").click(function () {
     // Start the timer
-    timeLeft = 1800; // Set the time back to 30 seconds
     startTimer();
 
     // Show the first question

@@ -140,13 +140,13 @@
                 </li>
               </ul>
             </li>
-            <li class="menu-item">
+            <li class="menu-item active open">
               <a href="lessons-css-syntax.html" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxl-css3"></i>
                 <div>Learn CSS</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item active">
                   <a href="lessons-css-syntax.html" class="menu-link">
                     <div>CSS Syntax</div>
                   </a>
@@ -181,7 +181,7 @@
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Exercises</span>
             </li>
-            <li class="menu-item active open">
+            <li class="menu-item">
               <a
                 href="exercises-html-attributes-1.html"
                 class="menu-link menu-toggle"
@@ -190,7 +190,7 @@
                 <div>HTML Exercises</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item active open">
+                <li class="menu-item">
                   <a
                     href="exercises-html-attributes-1.html"
                     class="menu-link menu-toggle"
@@ -207,7 +207,7 @@
                         <div>Exercise 1</div>
                       </a>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item">
                       <a
                         id="exercises-html-attributes-2"
                         href="exercises-html-attributes-2.html"
@@ -403,14 +403,42 @@
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row">
                 <div class="col-lg-12 mb-4">
-                  <div class="card text-center">
-                    <div class="card-body">
-                      <h1 class="card-title display-2 text-primary m-0">
-                        <b>HTML Exercises</b>
-                      </h1>
-                      <p class="card-text">
-                        Answer the questions to train yourself!
-                      </p>
+                  <div class="card">
+                    <div class="d-flex row">
+                      <div class="col-6 col-sm-3 order-0 text-start">
+                        <div class="card-body">
+                          <a
+                            href="index.html"
+                            type="button"
+                            class="btn btn-primary"
+                          >
+                            <i class="bx bx-chevron-left"></i>&nbsp; Home
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 order-2 order-md-1 text-center">
+                        <div class="card-body">
+                          <h1 class="card-title display-2 text-primary">
+                            <b>CSS Syntax</b>
+                          </h1>
+                          <p class="card-text">
+                            A CSS rule consists of a selector and a declaration
+                            block.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-6 col-sm-3 order-1 order-md-2 text-end">
+                        <div class="card-body">
+                          <a
+                            href="lessons-css-selectors.html"
+                            type="button"
+                            class="btn btn-primary"
+                          >
+                            Next &nbsp;
+                            <i class="bx bx-chevron-right"></i>
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -418,50 +446,123 @@
                 <div class="col-lg-12 mb-4">
                   <div class="card">
                     <div class="card-body">
-                      <div
-                        id="exercises-html-attributes-2-done"
-                        class="float-end"
-                      ></div>
-                      <h1 class="card-title">Exercise 2</h1>
+                      <h1 class="card-title">CSS Syntax</h1>
                       <p class="card-text">
-                        Set the size of the image to 250 pixels wide.
+                        The selector points to the HTML element you want to
+                        style.
+                        <br />
+                        The declaration block contains one or more declarations
+                        separated by semicolons.
+                        <br />
+                        Each declaration includes a CSS property name and a
+                        value, separated by a colon.
+                        <br />
+                        Multiple CSS declarations are separated with semicolons,
+                        and declaration blocks are surrounded by curly braces.
                       </p>
-                      <div class="card-text exercisecontainer">
-                        <pre>&lt;img src="w3schools.jpg" width="<input id="answer" maxlength="3" style="width: 34px" />" height="400"&gt;</pre>
+                      <div class="divider">
+                        <div class="divider-text">Start Example</div>
                       </div>
-                      <button
-                        id="submitBtn"
-                        class="btn btn-primary mb-1 mb-md-0"
-                      >
-                        Submit
-                      </button>
-                      <button
-                        id="showAnswerBtn"
-                        class="btn btn-warning mb-1 mb-md-0"
-                      >
-                        Show Answer
-                      </button>
-                      <button
-                        id="clearProgressBtn"
-                        class="btn btn-danger mb-1 mb-md-0"
-                      >
-                        Clear Progress
-                      </button>
-                      <div
-                        id="result"
-                        class="modal fade"
-                        tabindex="-1"
-                        aria-hidden="true"
-                      >
-                        <div
-                          class="modal-dialog modal-dialog-centered"
-                          role="document"
-                        >
-                          <div class="modal-content">
-                            <div class="modal-header"></div>
-                            <div class="modal-body text-center"></div>
-                            <div class="modal-footer text-center"></div>
-                          </div>
+                      <p class="card-text">
+                        <code>
+                          p
+                          <span class="cssdelimitercolor" style="color: black"
+                            >{</span
+                          ><span class="csspropertycolor" style="color: red"
+                            ><br />
+                            &nbsp;&nbsp;color<span
+                              class="csspropertyvaluecolor"
+                              style="color: mediumblue"
+                              ><span
+                                class="cssdelimitercolor"
+                                style="color: black"
+                                >:</span
+                              >
+                              red<span
+                                class="cssdelimitercolor"
+                                style="color: black"
+                                >;</span
+                              ></span
+                            ><br />
+                            &nbsp;&nbsp;text-align<span
+                              class="csspropertyvaluecolor"
+                              style="color: mediumblue"
+                              ><span
+                                class="cssdelimitercolor"
+                                style="color: black"
+                                >:</span
+                              >
+                              center<span
+                                class="cssdelimitercolor"
+                                style="color: black"
+                                >;</span
+                              ></span
+                            ><br /> </span
+                          ><span class="cssdelimitercolor" style="color: black"
+                            >}</span
+                          >
+                        </code>
+                      </p>
+                      <div class="divider">
+                        <div class="divider-text">End Example</div>
+                      </div>
+                      <p class="card-text">
+                        <b>Example Explained</b>
+                      </p>
+                      <ul class="card-text">
+                        <li>
+                          <code>p</code> is a selector in CSS (it points to the
+                          HTML element you want to style:
+                          <code>&lt;p&gt;</code>).
+                        </li>
+                        <li>
+                          <code>color</code> is a property, and
+                          <code>red</code> is the property value
+                        </li>
+                        <li>
+                          <code>text-align</code> is a property, and
+                          <code>center</code> is the property value
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-12 mb-4">
+                  <div class="card bg-warning text-white">
+                    <div class="card-body">
+                      <p class="card-text">
+                        You will learn much more about CSS selectors and CSS
+                        properties in the next chapters!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-12 mb-4">
+                  <div class="card">
+                    <div class="d-flex row">
+                      <div class="col-6 col-sm-6 text-start">
+                        <div class="card-body">
+                          <a
+                            href="index.html"
+                            type="button"
+                            class="btn btn-primary"
+                          >
+                            <i class="bx bx-chevron-left"></i>&nbsp; Home
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-6 col-sm-6 text-end">
+                        <div class="card-body">
+                          <a
+                            href="lessons-css-selectors.html"
+                            type="button"
+                            class="btn btn-primary"
+                          >
+                            Next &nbsp;
+                            <i class="bx bx-chevron-right"></i>
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -526,64 +627,5 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script>
-      // Set the correct answer
-      var correctAnswer = "250";
-      // When the user clicks the "Submit" button
-      $("#submitBtn").click(function () {
-        // Get the user's answer
-        var userAnswer = $("#answer").val();
-
-        // Check if the user's answer is correct
-        if (userAnswer.toLowerCase() == correctAnswer.toLowerCase()) {
-          // If so, show a tick icon and save the fact that the user has answered correctly
-          $("#result").modal("toggle");
-          $("#result .modal-content").addClass("bg-success");
-          $("#result .modal-content").html(`
-                            <div class="modal-header"></div>
-                            <div class="modal-body text-center">
-        <div class="row">
-                              <div class="col mb-3">
-                                <h1 class="text-white">Correct!</h1>
-                              </div>
-                            </div></div>
-                            <div class="modal-footer text-center"></div>
-      `);
-          $("#result .modal-footer").html(`
-                              <a
-                                href="exercises-html-attributes-3.html"
-                                type="button"
-                                class="btn btn-outline-light"
-                              >
-                                Next
-                              </a>
-      `);
-          localStorage.setItem("exercises-html-attributes-2", true);
-        } else {
-          // If not, show an X icon
-          $("#result").modal("toggle");
-          $("#result .modal-content").addClass("bg-danger");
-          $("#result .modal-content").html(`
-                            <div class="modal-header"></div>
-                            <div class="modal-body text-center">
-        <div class="row">
-                              <div class="col mb-3">
-                                <h1 class="text-white">Not Correct</h1>
-                              </div>
-                            </div></div>
-                            <div class="modal-footer text-center"></div>
-      `);
-          $("#result .modal-footer").html(`
-                              <a
-                                href="exercises-html-attributes-2.html"
-                                type="button"
-                                class="btn btn-outline-light"
-                              >
-                                Try Again
-                              </a>
-      `);
-        }
-      });
-    </script>
   </body>
 </html>

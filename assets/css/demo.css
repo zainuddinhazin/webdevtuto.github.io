@@ -125,6 +125,9 @@ code {
   font-family: "Anonymous Pro", monospace;
   background-color: #f1f1f1;
 }
+pre {
+  margin: 0;
+}
 .btn-outline-white {
   color: #fff;
   border-color: #fff;
@@ -138,8 +141,11 @@ code {
   transform: translateY(-1px);
 }
 .exercisecontainer {
+  font-size: 125%;
+  font-family: "Anonymous Pro", monospace;
   background-color: #f1f1f1;
   padding: 16px;
+  margin-bottom: 1rem;
 }
 .bg-menu-theme .menu-sub > .menu-item > .menu-link.nobullet:before {
   width: 0;

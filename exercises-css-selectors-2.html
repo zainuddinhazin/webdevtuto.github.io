@@ -181,7 +181,7 @@
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Exercises</span>
             </li>
-            <li class="menu-item active open">
+            <li class="menu-item">
               <a
                 href="exercises-html-attributes-1.html"
                 class="menu-link menu-toggle"
@@ -190,7 +190,7 @@
                 <div>HTML Exercises</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item active open">
+                <li class="menu-item">
                   <a
                     href="exercises-html-attributes-1.html"
                     class="menu-link menu-toggle"
@@ -207,7 +207,7 @@
                         <div>Exercise 1</div>
                       </a>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item">
                       <a
                         id="exercises-html-attributes-2"
                         href="exercises-html-attributes-2.html"
@@ -259,7 +259,7 @@
                 </li>
               </ul>
             </li>
-            <li class="menu-item">
+            <li class="menu-item active open">
               <a
                 href="exercises-css-selectors-1.html"
                 class="menu-link menu-toggle"
@@ -268,7 +268,7 @@
                 <div>CSS Exercises</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item active open">
                   <a
                     href="exercises-css-selectors-1.html"
                     class="menu-link menu-toggle"
@@ -285,7 +285,7 @@
                         <div>Exercise 1</div>
                       </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item active">
                       <a
                         id="exercises-css-selectors-2"
                         href="exercises-css-selectors-2.html"
@@ -406,7 +406,7 @@
                   <div class="card text-center">
                     <div class="card-body">
                       <h1 class="card-title display-2 text-primary m-0">
-                        <b>HTML Exercises</b>
+                        <b>CSS Exercises</b>
                       </h1>
                       <p class="card-text">
                         Answer the questions to train yourself!
@@ -419,15 +419,25 @@
                   <div class="card">
                     <div class="card-body">
                       <div
-                        id="exercises-html-attributes-2-done"
+                        id="exercises-html-attributes-1-done"
                         class="float-end"
                       ></div>
                       <h1 class="card-title">Exercise 2</h1>
                       <p class="card-text">
-                        Set the size of the image to 250 pixels wide.
+                        Set the color of the element with
+                        <code>id="para1"</code>, to red.
                       </p>
                       <div class="card-text exercisecontainer">
-                        <pre>&lt;img src="w3schools.jpg" width="<input id="answer" maxlength="3" style="width: 34px" />" height="400"&gt;</pre>
+                        <pre>&lt;style&gt;
+<input id="answer" maxlength="6" style="width: 63px;"> {
+  color: red;
+}
+&lt;/style&gt;
+                          
+&lt;body&gt;
+  &lt;h1&gt;This is a heading&lt;/h1&gt;
+  &lt;p id="para1"&gt;This is a paragraph&lt;/p&gt;
+&lt;/body&gt;</pre>
                       </div>
                       <button
                         id="submitBtn"
@@ -528,7 +538,8 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script>
       // Set the correct answer
-      var correctAnswer = "250";
+      var correctAnswer = "#para1";
+
       // When the user clicks the "Submit" button
       $("#submitBtn").click(function () {
         // Get the user's answer
@@ -551,14 +562,14 @@
       `);
           $("#result .modal-footer").html(`
                               <a
-                                href="exercises-html-attributes-3.html"
+                                href="exercises-css-selectors-3.html"
                                 type="button"
                                 class="btn btn-outline-light"
                               >
                                 Next
                               </a>
       `);
-          localStorage.setItem("exercises-html-attributes-2", true);
+          localStorage.setItem("exercises-css-selectors-2", true);
         } else {
           // If not, show an X icon
           $("#result").modal("toggle");
@@ -575,7 +586,7 @@
       `);
           $("#result .modal-footer").html(`
                               <a
-                                href="exercises-html-attributes-2.html"
+                                href="exercises-css-selectors-2.html"
                                 type="button"
                                 class="btn btn-outline-light"
                               >
