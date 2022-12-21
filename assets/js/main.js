@@ -338,38 +338,6 @@ function nextQuestion() {
   });
 }
 
-// End the game
-function endGame() {
-  // Stop the timer
-  stopTimer();
-
-  // Show the final score
-  $("#results").modal("toggle");
-
-  $("#results .modal-body").html(`
-        <div class="row">
-                              <div class="col mb-3">
-                                Your final score is <b>${score}</b> out of ${totalScore}.
-                              </div>
-                            </div>
-      `);
-
-  // Check if the score is higher than the highest score
-  if (score > highestScore) {
-    localStorage.setItem("highestScore", score);
-    $("#results .modal-body").append(`
-          <div class="row g-2">
-                              <div class="col mb-0">
-                                Congratulations! You set a new high score!
-                              </div>
-                            </div>
-        `);
-  }
-
-  // Update the game state
-  gameOver = true;
-}
-
 // Start the game
 function startGame() {
   // Reset the game state
